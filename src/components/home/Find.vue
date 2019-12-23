@@ -20,10 +20,10 @@
             <div><i class="iconfont icon-gedan"></i></div>
             <p>歌单</p>
           </li>
-          <li>
+          <router-link to="/home/rankingList" tag="li">
             <div><i class="iconfont icon-paihang"></i></div>
             <p>排行榜</p>
-          </li>
+          </router-link>
           <li>
             <div><i class="iconfont icon-diantai"></i></div>
             <p>电台</p>

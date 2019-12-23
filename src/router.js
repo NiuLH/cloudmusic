@@ -6,6 +6,7 @@ import Find from './components/home/Find'
 import Village from './components/home/Village'
 import Video from './components/home/Video'
 import Recommendation from './components/home/Recommendation'
+import RankingList from './components/home/RankingList'
 Vue.use(VueRouter);
 var routes=[
     {
@@ -52,6 +53,13 @@ var routes=[
     {
         path:'/home/recommendation',
         component:Recommendation,
+        meta:{
+            keepAlive:true
+        }
+    },
+    {
+        path:'/home/rankingList',
+        component:RankingList,
         meta:{
             keepAlive:true
         }
