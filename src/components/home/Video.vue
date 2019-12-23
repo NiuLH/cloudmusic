@@ -1,6 +1,6 @@
 <!-- 视频 -->
 <template>
-  <div></div>
+  <div>这是视频</div>
 </template>
 
 <script>
