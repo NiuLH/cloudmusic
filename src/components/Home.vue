@@ -60,9 +60,6 @@ export default {
 
 </script>
 <style lang='scss'>
-  .home_box{
-    // padding:0 15px;
-  }
   img{
     width: 100%;
   }

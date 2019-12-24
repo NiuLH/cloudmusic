@@ -36,6 +36,25 @@
             </div>
         </div>
       </div>
+      <div class="ranklist2">
+        <h2>全球榜</h2>
+        <div class="center">
+            <div class="ranking_item" v-for="item in rankinglist4" :key="item.id">
+                <div class="rank_img">
+                    <img :src="item.coverImgUrl" alt="" />
+                </div>
+                <div class="describe">{{item.name}}</div>
+            </div>
+        </div>
+        <div class="center">
+            <div class="ranking_item" v-for="item in rankinglist5" :key="item.id">
+                <div class="rank_img">
+                    <img :src="item.coverImgUrl" alt="" />
+                </div>
+                <div class="describe">{{item.name}}</div>
+            </div>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -46,7 +65,9 @@ export default {
     return {
         rankinglist1:[],//榜单1
         rankinglist2:[],//榜单2
-        rankinglist3:[],//榜单2
+        rankinglist3:[],//榜单3
+        rankinglist4:[],//榜单4
+        rankinglist5:[],//榜单5
     };
   },
 
@@ -59,8 +80,10 @@ export default {
     getRankingList() {
       this.$http.get("toplist/detail").then(res => {
         this.rankinglist1 = res.list.slice(0,4);
-        this.rankinglist2 = res.list.slice(5,8);
-        this.rankinglist3 = res.list.slice(6,9);
+        this.rankinglist2 = res.list.slice(4,7);
+        this.rankinglist3 = res.list.slice(7,10);
+        this.rankinglist4 = res.list.slice(10,13);
+        this.rankinglist5 = res.list.slice(13,16);
       });
     },
     goback(){
@@ -72,18 +95,6 @@ export default {
 <style lang='scss' scoped>
     .ranking_box{
         padding:0 15px;
-    }
-    .common_title {
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        padding: 10px 10px;
-        z-index: 99;
-        background-color: #fff;
-        .iconfont {
-            font-size: 18px;
-        }
     }
     .ranking_body{
         margin-top: 50px;
@@ -131,13 +142,16 @@ export default {
         .ranking_item{
            padding-left:0;
            height: auto;
+           margin-bottom: 20px;
+           width: 100px;
         }
         .rank_img{
             position:static;
             margin-right: 0;
         }
         .describe{
-            font-size: 13px;
+            font-size: 12px;
+            margin-top: 5px;
         }
     }
 </style>

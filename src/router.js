@@ -7,6 +7,8 @@ import Village from './components/home/Village'
 import Video from './components/home/Video'
 import Recommendation from './components/home/Recommendation'
 import RankingList from './components/home/RankingList'
+import Radio from './components/home/Radio'
+import PlayList from './components/home/PlayList'
 Vue.use(VueRouter);
 var routes=[
     {
@@ -60,6 +62,20 @@ var routes=[
     {
         path:'/home/rankingList',
         component:RankingList,
+        meta:{
+            keepAlive:true
+        }
+    },
+    {
+        path:'/home/playList',
+        component:PlayList,
+        meta:{
+            keepAlive:true
+        }
+    },
+    {
+        path:'/home/radio',
+        component:Radio,
         meta:{
             keepAlive:true
         }

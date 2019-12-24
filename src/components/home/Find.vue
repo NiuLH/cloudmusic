@@ -16,18 +16,18 @@
             <div><i class="iconfont icon-tuijian"></i></div>
             <p>每日推荐</p>
           </router-link>
-          <li>
+          <router-link to="/home/playList" tag="li">
             <div><i class="iconfont icon-gedan"></i></div>
             <p>歌单</p>
-          </li>
+          </router-link>
           <router-link to="/home/rankingList" tag="li">
             <div><i class="iconfont icon-paihang"></i></div>
             <p>排行榜</p>
           </router-link>
-          <li>
+          <router-link to="/home/radio" tag="li">
             <div><i class="iconfont icon-diantai"></i></div>
             <p>电台</p>
-          </li>
+          </router-link>
         </ul>
       </div>
       <!-- 推荐歌单 -->
