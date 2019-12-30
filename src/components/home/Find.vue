@@ -152,7 +152,7 @@ export default {
       }
       li{
         position: relative;
-        float:left;
+        display: inline-block;
         width: 30%;
         margin-right: 5%;
         margin-bottom: 10px;
