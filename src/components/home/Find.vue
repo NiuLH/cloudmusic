@@ -34,7 +34,7 @@
       <div class="home_recommendation">
         <div class="title">
           <h2>推荐歌单</h2>
-          <a>歌单广场</a>
+          <router-link to="/home/playlist" tag="span">歌单广场</router-link>
         </div>
         <div class="list">
           <ul>
@@ -70,7 +70,7 @@ export default {
     },
     // 获取推荐
     getRecommendationList(){
-      this.$http.get('personalized?limit=6').then(res=>{
+      this.$http.get('personalized?limit=9').then(res=>{
         this.recommendationList=res.result;
       })
     }
@@ -136,7 +136,7 @@ export default {
         font-size: 16px;
         margin:0;
       }
-      a{
+      span{
         display: block;
         padding:0 10px;
         font-size: 13px;

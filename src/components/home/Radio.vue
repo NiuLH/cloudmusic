@@ -20,8 +20,8 @@
       <!-- 推荐电台 -->
       <div class="home_recommendation">
         <div class="title">
-          <h2>推荐歌单</h2>
-          <a>换一换</a>
+          <h2>推荐电台</h2>
+          <!-- <a>换一换</a> -->
         </div>
         <div class="list">
           <ul>
@@ -59,7 +59,7 @@ export default {
     // 获取推荐电台
     getRecommendList() {
       this.$http.get("dj/recommend").then(res => {
-        this.recommendRadio = res.djRadios.slice(0,6);
+        this.recommendRadio = res.djRadios.slice(0,9);
       });
     },
     goback() {
