@@ -13,7 +13,7 @@
         </div>
         <div class="recommend_box">
             <ul>
-                <li v-for="item in recommendList" :key="item.id">
+                <li v-for="item in recommendList" :key="item.id" @click="playMusic(item.song.id)">
                 <img :src="item.picUrl"/>
                 <div class="song_info">
                     <div class="song_name">{{item.name}}</div>
@@ -64,8 +64,13 @@ export default {
         this.recommendList = res.result;
       });
     },
+    // 返回
     goback(){
         this.$router.go(-1);
+    },
+    // 点击播放音乐
+    playMusic(){
+        
     }
   }
 };

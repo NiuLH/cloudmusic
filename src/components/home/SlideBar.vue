@@ -84,6 +84,7 @@ export default {
         right: 0;
         bottom: 0;
         left: 0;
+        z-index: 999;
     }
     .slidebar_function{
         padding:0 15px;
@@ -97,6 +98,7 @@ export default {
         bottom: 0;
         transform:translateZ(0);
         transition:left 0.3s;
+        z-index: 1000;
     }
     .slideup .slidebar_bg{
         display: block;

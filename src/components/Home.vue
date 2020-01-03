@@ -75,6 +75,7 @@ export default {
     right:0;
     padding:15px 50px;
     background-color: #fff;
+    z-index:99;
     ul{
       display: flex;
       li{
@@ -87,11 +88,13 @@ export default {
       position: absolute;
       left:15px;
       top: 15px;
+      cursor: pointer;
     }
     .icon-search{
       position: absolute;
       right:15px;
       top: 15px;
+      cursor: pointer;
     }
   }
   .blank{
