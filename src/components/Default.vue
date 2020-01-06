@@ -16,9 +16,10 @@
             <i class="iconfont icon-fenxiang"></i>
           </div>
           <!-- 封面 -->
-          <div class="cover"></div>
+          <div class="cover"><img src="http://p1.music.126.net/z3iaVvR-7_DLxzktOu5I3g==/109951164594343426.jpg" alt=""></div>
           <!-- 歌词 -->
-          <div class="music_lyric"></div>
+          <div class="music_lyric">{{currentLrc}}</div>
+          <!-- <audio :src="musicUrl" autoplay id="player" ref="player" @timeupdate="showLrc"></audio> -->
       </div>
   </div>
 </template>
@@ -28,14 +29,53 @@ export default {
   data () {
     return {
       musicUrl:'',//歌曲链接
+      currentLrc:'',//当前显示歌词
+      musicLrc:[],//歌词
+      lineNo:0,//歌词行数
     };
   },
+  created(){
+    this.getMusicUrl();
+    this.getMusicLrc();
+  },
   methods:{
-    // 获取歌曲链接
+      // 获取歌曲链接
       getMusicUrl(){
         this.$http.get("/song/url?id=1413377028").then(res => {
           this.musicUrl = res.data[0].url;
+          this.$nextTick(()=>{
+            // document.getElementById('player').play();
+          })
         });
+      },
+      // 获取歌词
+      getMusicLrc(){
+        this.$http.get("/lyric?id=1413377028").then(res => {
+          var lrcObj=[];
+          var tempLrc=res.lrc.lyric.split('\n');
+          tempLrc.forEach((item)=>{
+            var t=item.substring(item.indexOf('[')+1,item.indexOf(']'));
+            var c=item.substr(item.indexOf(']')+1);
+            lrcObj.push({
+              t:(t.split(':')[0]*60+parseFloat(t.split(':')[1]).toFixed(3)),
+              c:c
+            })
+          })
+          this.musicLrc=lrcObj;
+        });
+      },
+      // 展示歌词
+      showLrc(){
+        var line=this.lineNo;
+        var lrcArr=this.musicLrc;
+        if(line==lrcArr.length){
+          return;
+        }
+        var current=this.$refs.player.currentTime;
+        if(parseFloat(lrcArr[line].t)<=current){
+          this.currentLrc=lrcArr[line].c;
+          this.lineNo=line+1;
+        }
       }
   }
 }
@@ -60,6 +100,18 @@ export default {
   background-size: cover;
   // filter:blur(10px);
   z-index: 9999;
+  .cover{
+    width:100%;
+    z-index: 10000;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    img{
+      width: 60%;
+      border-radius: 50%;
+    }
+  }
 }
 .player_title{
   display: flex;
@@ -81,5 +133,8 @@ export default {
       margin-top: 5px;
     }
   }
+}
+.music_lyric{
+  color: #fff;
 }
 </style>
