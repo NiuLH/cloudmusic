@@ -16,9 +16,13 @@
             <i class="iconfont icon-fenxiang"></i>
           </div>
           <!-- 封面 -->
-          <div class="cover"><img src="http://p1.music.126.net/z3iaVvR-7_DLxzktOu5I3g==/109951164594343426.jpg" alt=""></div>
-          <!-- 歌词 -->
-          <div class="music_lyric">{{currentLrc}}</div>
+          <div class="cover play">
+            <img src="http://p1.music.126.net/z3iaVvR-7_DLxzktOu5I3g==/109951164594343426.jpg" alt="">
+            <!-- 歌词 -->
+            <div class="music_lyric">{{currentLrc}}</div>
+          </div>
+          <div class="cover_mask"></div>
+          <div class="cover_bg"></div>
           <!-- <audio :src="musicUrl" autoplay id="player" ref="player" @timeupdate="showLrc"></audio> -->
       </div>
   </div>
@@ -89,6 +93,14 @@ export default {
   transform: translateX(-100%);
   opacity: 0;
 } */
+@keyframes coverRotate {
+  0%{
+    transform: rotate(0);
+  }
+  100%{
+    transform: rotate(360deg);
+  }
+}
 .player{
   // display: none;
   position: fixed;
@@ -96,24 +108,48 @@ export default {
   right:0;
   bottom:0;
   left:0;
-  background: url(http://p1.music.126.net/z3iaVvR-7_DLxzktOu5I3g==/109951164594343426.jpg);
-  background-size: cover;
-  // filter:blur(10px);
-  z-index: 9999;
+  z-index: 999;
   .cover{
-    width:100%;
-    z-index: 10000;
+    width: 60%;
+    z-index: 1002;
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%,-50%);
+    transform: translate(-50%,-70%);
     img{
-      width: 60%;
       border-radius: 50%;
     }
   }
+  .cover.play img{
+    animation: coverRotate 20s linear infinite;
+  }
+  .cover_mask{
+    position: absolute;
+    left: 0;
+    top: 0;
+    right:0;
+    bottom: 0;
+    background-color:rgba(0,0,0,0.5);
+    z-index: 1001;
+  }
+  .cover_bg{
+    position: absolute;
+    top: 0;
+    right:0;
+    bottom:0;
+    left:0;
+    z-index: 1000;
+    background: rgba(0,0,0,0.8) url(http://p1.music.126.net/z3iaVvR-7_DLxzktOu5I3g==/109951164594343426.jpg);
+    background-size: cover;
+    filter:blur(8px);
+  }
 }
 .player_title{
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  z-index: 1003;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -135,6 +171,8 @@ export default {
   }
 }
 .music_lyric{
+  text-align:center;
   color: #fff;
+  margin-top: 30px;
 }
 </style>
