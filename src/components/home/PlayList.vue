@@ -9,20 +9,20 @@
     <div class="swiper_bg" :style="'background:url('+swiperBg+')'"></div>
     <div class="swiper-container">
         <div class="swiper-wrapper">
-            <div class="swiper-slide" v-for="item in bannerList" :key="item.id">
+            <router-link tag="div" :to="'/playListDetail/'+item.id" class="swiper-slide" v-for="item in bannerList" :key="item.id">
                 <img :src="item.coverImgUrl" alt="">
                 <p>{{item.name}}</p>
-            </div>
+            </router-link>
         </div>
       </div>
       <!-- 推荐列表 -->
       <div class="home_recommendation">
         <div class="list">
           <ul>
-            <li v-for="item in playlist" :key="item.id">
+            <router-link tag="li" :to="'/playListDetail/'+item.id" v-for="item in playlist" :key="item.id">
               <img :src="item.coverImgUrl" alt="" />
               <div class="describe">{{item.name}}</div>
-            </li>
+            </router-link>
           </ul>
         </div>
       </div>

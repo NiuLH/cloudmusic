@@ -38,11 +38,11 @@
         </div>
         <div class="list">
           <ul>
-            <li v-for="item in recommendationList" :key="item.id">
+            <router-link tag="li" :to="'/playListDetail/'+item.id" v-for="item in recommendationList" :key="item.id">
               <img :src="item.picUrl" alt="">
               <div class="describe">{{item.name}}</div>
               <div class="track"><i class="iconfont icon-sanjiaoxing"></i>{{item.trackCount}}万</div>
-            </li>
+            </router-link>
           </ul>
         </div>
       </div>

@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div id="app" :class="{'stopMove':$store.state.switch,'distance':$store.state.songId!=''}">
     <Default/>
   </div>
 </template>
@@ -32,5 +32,12 @@ export default {
         .iconfont {
             font-size: 18px;
         }
+    }
+    .stopMove{
+      height: 100vh;
+      overflow: hidden;
+    }
+    .distance{
+      padding-bottom: 40px;
     }
 </style>

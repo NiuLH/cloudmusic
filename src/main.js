@@ -5,6 +5,7 @@ import App from './App'
 import axios from 'axios'
 import Qs from 'qs'
 import router from './router.js'
+import store from './store.js'
 // 轮播
 import { Swipe, SwipeItem } from 'vant';
 import 'vant/lib/swipe/style'
@@ -23,7 +24,6 @@ import '../static/normalize.css';
 /* import { Button } from 'vant';
 
 Vue.use(Button); */
-
 Vue.config.productionTip = false
 // axios配置
 Vue.prototype.$http = axios
@@ -34,7 +34,6 @@ axios.defaults.transformRequest = [
 ]
 axios.defaults.baseURL = 'http://localhost:3000/'
 axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
-
 // 响应拦截器
 axios.interceptors.response.use(function (response){
   return response.data;
@@ -46,6 +45,7 @@ axios.interceptors.response.use(function (response){
 /* eslint-disable no-new */
 new Vue({
   router,
+  store,
   el: '#app',
   components: { App },
   template: '<App/>'
