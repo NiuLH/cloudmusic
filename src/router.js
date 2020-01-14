@@ -10,6 +10,7 @@ import RankingList from './components/home/RankingList'
 import Radio from './components/home/Radio'
 import PlayList from './components/home/PlayList'
 import PlayListDetail from './components/home/PlayListDetail'
+import RankingListDetail from './components/home/RankingListDetail' 
 Vue.use(VueRouter);
 var routes=[
     {
@@ -84,6 +85,13 @@ var routes=[
     {
         path:'/playListDetail/:id',
         component:PlayListDetail,
+        meta:{
+            keepAlive:true
+        }
+    },
+    {
+        path:'/rankingListDetail',
+        component:RankingListDetail,
         meta:{
             keepAlive:true
         }

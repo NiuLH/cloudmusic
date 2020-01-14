@@ -36,10 +36,10 @@
           <span class="name">推荐歌单</span>
         </div>
         <ul>
-          <li v-for="item in recommendationList" :key="item.id">
+          <router-link tag="li" :to="'/playListDetail/'+item.id" v-for="item in recommendationList" :key="item.id">
             <img :src="item.picUrl" alt="">
             <div class="describe">{{item.name}}</div>
-          </li>
+          </router-link>
         </ul>
       </div>
   </div>
@@ -58,7 +58,7 @@ export default {
   methods: {
     // 获取推荐
     getRecommendationList(){
-      this.$http.get('personalized?limit=6').then(res=>{
+      this.$http.get('personalized?limit=9').then(res=>{
         this.recommendationList=res.result;
       })
     }
@@ -149,7 +149,8 @@ export default {
       display: -webkit-box;
       -webkit-box-orient: vertical;
       -webkit-line-clamp: 2;
-      overflow: hidden; 
+      overflow: hidden;
+      height: 26px; 
       margin-top: 5px;
     }
   }

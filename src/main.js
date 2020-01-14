@@ -32,7 +32,7 @@ axios.defaults.transformRequest = [
     return Qs.stringify(data);
   }
 ]
-axios.defaults.baseURL = 'http://localhost:3000/'
+axios.defaults.baseURL = 'http://154.221.27.74:3000/'
 axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
 // 响应拦截器
 axios.interceptors.response.use(function (response){

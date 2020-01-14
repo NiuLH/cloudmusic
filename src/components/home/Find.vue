@@ -166,7 +166,8 @@ export default {
           display: -webkit-box;
           -webkit-box-orient: vertical;
           -webkit-line-clamp: 2;
-          overflow: hidden; 
+          overflow: hidden;
+          height: 26px; 
           margin-top: 5px;
         }
         .track{

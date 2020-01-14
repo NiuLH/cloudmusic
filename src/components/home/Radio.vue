@@ -59,7 +59,7 @@ export default {
     // 获取推荐电台
     getRecommendList() {
       this.$http.get("dj/recommend").then(res => {
-        this.recommendRadio = res.djRadios.slice(0,9);
+        this.recommendRadio = res.djRadios.slice(0,12);
       });
     },
     goback() {

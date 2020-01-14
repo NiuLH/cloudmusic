@@ -8,7 +8,7 @@
     <div class="ranking_body">
       <div class="ranklist1">
         <h2>官方榜</h2>
-        <div class="ranking_item" v-for="item in rankinglist1" :key="item.id">
+        <div @click="toDetail(item.name,item.coverImgUrl,item.description)" class="ranking_item" v-for="item in rankinglist1" :key="item.id">
             <div class="rank_img">
                 <img :src="item.coverImgUrl" alt="" />
             </div>
@@ -20,7 +20,7 @@
       <div class="ranklist2">
         <h2>推荐榜</h2>
         <div class="center">
-            <div class="ranking_item" v-for="item in rankinglist2" :key="item.id">
+            <div @click="toDetail(item.name,item.coverImgUrl,item.description)" class="ranking_item" v-for="item in rankinglist2" :key="item.id">
                 <div class="rank_img">
                     <img :src="item.coverImgUrl" alt="" />
                 </div>
@@ -28,7 +28,7 @@
             </div>
         </div>
         <div class="center">
-            <div class="ranking_item" v-for="item in rankinglist3" :key="item.id">
+            <div @click="toDetail(item.name,item.coverImgUrl,item.description)" class="ranking_item" v-for="item in rankinglist3" :key="item.id">
                 <div class="rank_img">
                     <img :src="item.coverImgUrl" alt="" />
                 </div>
@@ -39,7 +39,7 @@
       <div class="ranklist2">
         <h2>全球榜</h2>
         <div class="center">
-            <div class="ranking_item" v-for="item in rankinglist4" :key="item.id">
+            <div @click="toDetail(item.name,item.coverImgUrl,item.description)" class="ranking_item" v-for="item in rankinglist4" :key="item.id">
                 <div class="rank_img">
                     <img :src="item.coverImgUrl" alt="" />
                 </div>
@@ -47,7 +47,7 @@
             </div>
         </div>
         <div class="center">
-            <div class="ranking_item" v-for="item in rankinglist5" :key="item.id">
+            <div @click="toDetail(item.name,item.coverImgUrl,item.description)" class="ranking_item" v-for="item in rankinglist5" :key="item.id">
                 <div class="rank_img">
                     <img :src="item.coverImgUrl" alt="" />
                 </div>
@@ -88,6 +88,11 @@ export default {
     },
     goback(){
         this.$router.go(-1);
+    },
+    // 跳转详情页
+    toDetail(name,cover,describe){
+        this.$store.commit('getRankingData',{name:name,cover:cover,describe:describe});
+        this.$router.push('/rankingListDetail')
     }
   }
 };

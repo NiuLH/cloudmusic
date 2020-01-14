@@ -12,7 +12,7 @@
         </div>
         <div class="describe">
             <div class="title">{{playInfo.name}}</div>
-            <div class="creater">
+            <div class="creater" v-if="playInfo.creator!=''">
                 <img :src="playInfo.creator.avatarUrl" alt="">
                 <span>{{playInfo.creator.nickname}}</span>
             </div>
@@ -20,10 +20,6 @@
         </div>
     </div>
     <div class="recommend_body">
-        <div class="today">
-            <span>{{day}}</span>/
-            <span>{{month}}</span>
-        </div>
         <div class="recommend_box">
             <ul>
                 <li v-for="item in playList" :key="item.id" @click="playMusic(item.id,item.al.picUrl,item.name,item.ar[0].name)">
@@ -52,30 +48,25 @@ export default {
         day:'',//当前日
         playlistId:'',//歌单id
         playList:[],//歌曲列表
-        playInfo:''//歌曲信息
+        playInfo:'',//歌曲信息
+        rankingType:'',//
+        rankingDescribe:'',//
+        rankingCover:'',//
     };
   },
   created(){
-      this.getToday();
-  },
-  mounted(){
-      this.playlistId=this.$route.params.id;
+      this.rankingType=this.$store.state.rankingType;
+      this.rankingDescribe=this.$store.state.rankingDescribe;
+      this.rankingCover=this.$store.state.rankingCover;
       this.getPlayList();
   },
+  mounted(){
+      
+  },
   methods: {
-    // 获取当天日期
-    getToday(){
-        var datebox=new Date();
-        var month=datebox.getMonth()+1;
-        var day=datebox.getDate();
-        month=month<10?'0'+month:month;
-        day=day<10?'0'+day:day;
-        this.month=month;
-        this.day=day;
-    }, 
     //获取推荐列表
     getPlayList() {
-      this.$http.get("/playlist/detail?id="+this.playlistId).then(res => {
+      this.$http.get("/top/list?idx="+this.rankingType).then(res => {
           this.playInfo=res.playlist;
           if(res.playlist.trackIds!=''){
             var result=res.playlist.trackIds.slice(0,100);
@@ -139,21 +130,6 @@ export default {
     .recommend_body{
         position: relative;
         margin-top: 20px;
-        .today{
-            position: absolute;
-            top: 10vh;
-            left: 20px;
-            color: #fff;
-            span:nth-child(1){
-                font-size: 40px;
-                margin-right: 3px;
-                font-family: "Times New Roman",Georgia,Serif;
-            }
-            span:nth-child(2){
-                font-size: 14px;
-                font-family: "Times New Roman",Georgia,Serif;
-            }
-        }
         .recommend_box{
             background-color: #fff;
             padding:20px 10px 0 10px;

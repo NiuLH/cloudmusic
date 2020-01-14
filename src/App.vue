@@ -1,5 +1,5 @@
 <template>
-  <div id="app" :class="{'stopMove':$store.state.switch,'distance':$store.state.songId!=''}">
+  <div id="app" v-cloak :class="{'stopMove':$store.state.switch,'distance':$store.state.songId!=''}">
     <Default/>
   </div>
 </template>
@@ -21,6 +21,13 @@ export default {
   }
 </style>
 <style lang="scss">
+    html,body{
+      max-width: 640px;
+      margin:0 auto;
+    }
+    [v-cloak]{
+      display: none;
+    }
     .common_title {
         position: fixed;
         top: 0;
